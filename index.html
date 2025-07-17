@@ -1,1 +1,141 @@
-<h1>estudia</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor Académico - Sistema de Gestión Estudiantil</title>
+    
+    <!-- Meta etiquetas básicas -->
+    <meta name="description" content="Sistema completo de gestión académica para estudiantes, profesores y administradores. Organiza tareas, calificaciones, asistencia y horarios de manera eficiente."/>
+    <meta name="keywords" content="gestor académico, sistema estudiantil, educación, calificaciones, asistencia, tareas, horarios">
+    <meta name="author" content="GE Studios">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags COMPLETAS (para WhatsApp, Facebook, etc.) -->
+    <meta property="og:title" content="Gestor Académico - Sistema de Gestión Estudiantil" />
+    <meta property="og:description" content="Sistema completo de gestión académica para estudiantes, profesores y administradores. Organiza tareas, calificaciones, asistencia y horarios de manera eficiente." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://gestudios.netlify.app/icons/web-app-manifest-512x512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Logo del Gestor Académico" />
+    <meta property="og:url" content="https://gestudios.netlify.app/" />
+    <meta property="og:site_name" content="Gestor Académico" />
+    <meta property="og:locale" content="es_ES" />
+    
+    <!-- Meta etiquetas específicas para Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gestor Académico - Sistema de Gestión Estudiantil" />
+    <meta name="twitter:description" content="Sistema completo de gestión académica para estudiantes, profesores y administradores." />
+    <meta name="twitter:image" content="https://gestudios.netlify.app/icons/web-app-manifest-512x512.png" />
+    <meta name="twitter:image:alt" content="Logo del Gestor Académico" />
+    
+    <!-- Meta etiquetas adicionales para WhatsApp -->
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:secure_url" content="https://gestudios.netlify.app/icons/web-app-manifest-512x512.png" />
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3b82f6"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Gestor Académico">
+    
+    <!-- Favicons and Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/web-app-manifest-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/web-app-manifest-512x512.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gestudios.netlify.app/" />
+
+    <!-- External Libraries -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.0"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Tailwind CSS Dark Mode Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    // Puedes extender el tema aquí si es necesario
+                }
+            }
+        }
+    </script>
+    
+    <!-- Dark Mode Toggler Script -->
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .highlight-animation {
+            animation: pulse-border 1.5s infinite alternate;
+        }
+        @keyframes pulse-border {
+            from {
+                box-shadow: 0 0 0 0 rgba(var(--ring-color-rgb, 0, 0, 0), 0.7);
+                border-color: var(--border-color, #e5e7eb);
+                transform: scale(1);
+            }
+            to {
+                box-shadow: 0 0 0 4px rgba(var(--ring-color-rgb, 0, 0, 0), 0);
+                border-color: var(--highlight-color, #3b82f6);
+                transform: scale(1.02);
+            }
+        }
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <!-- The React application will be rendered here -->
+    <div id="root"></div>
+
+    <!-- Main Application Script -->
+    <script type="text/babel" src="app.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado con éxito:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Fallo el registro del Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

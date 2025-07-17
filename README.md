@@ -1,1 +1,1 @@
-# Estudiar
+# Estudios
